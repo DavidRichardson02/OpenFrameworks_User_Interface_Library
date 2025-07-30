@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E04FA8392C05EA6200D22B81 /* InputControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E04FA8372C05EA6200D22B81 /* InputControls.cpp */; };
+		E04FA83C2C05EA6C00D22B81 /* NavigationalComponents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E04FA83A2C05EA6C00D22B81 /* NavigationalComponents.cpp */; };
+		E04FA83F2C05EA7800D22B81 /* InformationalComponents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E04FA83D2C05EA7800D22B81 /* InformationalComponents.cpp */; };
+		E04FA8432C05EE3400D22B81 /* CoordinateSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E04FA8412C05EE3400D22B81 /* CoordinateSystem.cpp */; };
+		E04FA8482C05F11D00D22B81 /* DrawingUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E04FA8462C05F11D00D22B81 /* DrawingUtilities.cpp */; };
+		E0A64D1A2DD1D88F00B6CBAC /* InterfaceTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0A64D192DD1D88F00B6CBAC /* InterfaceTemplate.cpp */; };
+		E0A64D1D2DD990B700B6CBAC /* Vects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0A64D1C2DD990B700B6CBAC /* Vects.cpp */; };
+		E0A64D202DD990C200B6CBAC /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0A64D1F2DD990C200B6CBAC /* Geometry.cpp */; };
+		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4A5B60F29BAAAE400C2D356 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		191CD6FA2847E21E0085CBB6 /* of.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = of.entitlements; sourceTree = "<group>"; };
+		191EF70929D778A400F35F26 /* openFrameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = openFrameworks; path = ../../../libs/openFrameworks; sourceTree = SOURCE_ROOT; };
+		E04FA8372C05EA6200D22B81 /* InputControls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputControls.cpp; sourceTree = "<group>"; };
+		E04FA8382C05EA6200D22B81 /* InputControls.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputControls.hpp; sourceTree = "<group>"; };
+		E04FA83A2C05EA6C00D22B81 /* NavigationalComponents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NavigationalComponents.cpp; sourceTree = "<group>"; };
+		E04FA83B2C05EA6C00D22B81 /* NavigationalComponents.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NavigationalComponents.hpp; sourceTree = "<group>"; };
+		E04FA83D2C05EA7800D22B81 /* InformationalComponents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InformationalComponents.cpp; sourceTree = "<group>"; };
+		E04FA83E2C05EA7800D22B81 /* InformationalComponents.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InformationalComponents.hpp; sourceTree = "<group>"; };
+		E04FA8412C05EE3400D22B81 /* CoordinateSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CoordinateSystem.cpp; sourceTree = "<group>"; };
+		E04FA8422C05EE3400D22B81 /* CoordinateSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CoordinateSystem.hpp; sourceTree = "<group>"; };
+		E04FA8462C05F11D00D22B81 /* DrawingUtilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DrawingUtilities.cpp; sourceTree = "<group>"; };
+		E04FA8472C05F11D00D22B81 /* DrawingUtilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawingUtilities.hpp; sourceTree = "<group>"; };
+		E0A64D182DD1D88F00B6CBAC /* InterfaceTemplate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InterfaceTemplate.hpp; sourceTree = "<group>"; };
+		E0A64D192DD1D88F00B6CBAC /* InterfaceTemplate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InterfaceTemplate.cpp; sourceTree = "<group>"; };
+		E0A64D1B2DD990B700B6CBAC /* Vects.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vects.hpp; sourceTree = "<group>"; };
+		E0A64D1C2DD990B700B6CBAC /* Vects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vects.cpp; sourceTree = "<group>"; };
+		E0A64D1E2DD990C200B6CBAC /* Geometry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Geometry.hpp; sourceTree = "<group>"; };
+		E0A64D1F2DD990C200B6CBAC /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
+		E0A64D212DD990D100B6CBAC /* StatisticalMethods.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StatisticalMethods.hpp; sourceTree = "<group>"; };
+		E4B69B5B0A3A1756003C02F2 /* OpenFrameworks_User_Interface_LibraryDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenFrameworks_User_Interface_LibraryDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = addons;
+			path = ../../../addons;
+			sourceTree = "<group>";
+		};
+		E04FA8362C05EA5100D22B81 /* Interface Elements */ = {
+			isa = PBXGroup;
+			children = (
+				E04FA8372C05EA6200D22B81 /* InputControls.cpp */,
+				E04FA8382C05EA6200D22B81 /* InputControls.hpp */,
+				E04FA83A2C05EA6C00D22B81 /* NavigationalComponents.cpp */,
+				E04FA83B2C05EA6C00D22B81 /* NavigationalComponents.hpp */,
+				E04FA83D2C05EA7800D22B81 /* InformationalComponents.cpp */,
+				E04FA83E2C05EA7800D22B81 /* InformationalComponents.hpp */,
+				E0A64D182DD1D88F00B6CBAC /* InterfaceTemplate.hpp */,
+				E0A64D192DD1D88F00B6CBAC /* InterfaceTemplate.cpp */,
+			);
+			path = "Interface Elements";
+			sourceTree = "<group>";
+		};
+		E04FA8402C05EDEB00D22B81 /* Math Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E04FA8412C05EE3400D22B81 /* CoordinateSystem.cpp */,
+				E04FA8422C05EE3400D22B81 /* CoordinateSystem.hpp */,
+				E0A64D1B2DD990B700B6CBAC /* Vects.hpp */,
+				E0A64D1C2DD990B700B6CBAC /* Vects.cpp */,
+				E0A64D1E2DD990C200B6CBAC /* Geometry.hpp */,
+				E0A64D1F2DD990C200B6CBAC /* Geometry.cpp */,
+				E0A64D212DD990D100B6CBAC /* StatisticalMethods.hpp */,
+				E04FA8362C05EA5100D22B81 /* Interface Elements */,
+			);
+			path = "Math Utilities";
+			sourceTree = "<group>";
+		};
+		E04FA8452C05F10F00D22B81 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				E04FA8462C05F11D00D22B81 /* DrawingUtilities.cpp */,
+				E04FA8472C05F11D00D22B81 /* DrawingUtilities.hpp */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		E0B1116A2E135B0D0088157B /* Interface Templates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Interface Templates";
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				E04FA8452C05F10F00D22B81 /* Rendering */,
+				E04FA8402C05EDEB00D22B81 /* Math Utilities */,
+				E0B1116A2E135B0D0088157B /* Interface Templates */,
+				191CD6FA2847E21E0085CBB6 /* of.entitlements */,
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				191EF70929D778A400F35F26 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				E4B69B5B0A3A1756003C02F2 /* OpenFrameworks_User_Interface_LibraryDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* OpenFrameworks_User_Interface_Library */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OpenFrameworks_User_Interface_Library" */;
+			buildPhases = (
+				E42962A92163ECCD00A6A9E2 /* Run Script — Compile OF */,
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				E4A5B60F29BAAAE400C2D356 /* CopyFiles */,
+				19B789C429E5AB4A0082E9B8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenFrameworks_User_Interface_Library;
+			productName = myOFApp;
+			productReference = E4B69B5B0A3A1756003C02F2 /* OpenFrameworks_User_Interface_LibraryDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OpenFrameworks_User_Interface_Library" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* OpenFrameworks_User_Interface_Library */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19B789C429E5AB4A0082E9B8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$OF_PATH/scripts/osx/xcode_project.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E42962A92163ECCD00A6A9E2 /* Run Script — Compile OF */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script — Compile OF";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"💾 Compiling Openframeworks\"\nxcodebuild -project \"$OF_PATH/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj\" -target openFrameworks -configuration \"${CONFIGURATION}\"  CLANG_CXX_LANGUAGE_STANDARD=$CLANG_CXX_LANGUAGE_STANDARD MACOSX_DEPLOYMENT_TARGET=$MACOSX_DEPLOYMENT_TARGET GCC_PREPROCESSOR_DEFINITIONS=$USER_PREPROCESSOR_DEFINITIONS\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E04FA8432C05EE3400D22B81 /* CoordinateSystem.cpp in Sources */,
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				E0A64D1D2DD990B700B6CBAC /* Vects.cpp in Sources */,
+				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				E0A64D1A2DD1D88F00B6CBAC /* InterfaceTemplate.cpp in Sources */,
+				E04FA83F2C05EA7800D22B81 /* InformationalComponents.cpp in Sources */,
+				E04FA83C2C05EA6C00D22B81 /* NavigationalComponents.cpp in Sources */,
+				E0A64D202DD990C200B6CBAC /* Geometry.cpp in Sources */,
+				E04FA8482C05F11D00D22B81 /* DrawingUtilities.cpp in Sources */,
+				E04FA8392C05EA6200D22B81 /* InputControls.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = of.entitlements;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+				);
+				OTHER_CPLUSPLUSFLAGS = "-D__MACOSX_CORE__";
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = of.entitlements;
+				COPY_PHASE_STRIP = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_UNROLL_LOOPS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+				);
+				OTHER_CPLUSPLUSFLAGS = "-D__MACOSX_CORE__";
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(LIB_OF_DEBUG)",
+				);
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(LIB_OF)",
+				);
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OpenFrameworks_User_Interface_Library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OpenFrameworks_User_Interface_Library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}
