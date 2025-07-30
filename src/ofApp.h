@@ -9,7 +9,8 @@
 #pragma once
 #include "ofMain.h"
 #include "InputControls.hpp"
-
+#include "NavigationalComponents.hpp"
+#include "InformationalComponents.hpp"
 
 
 
@@ -19,31 +20,25 @@
 class ofApp : public ofBaseApp
 {
 public:
-	Button myButton;
-	Toggle myToggle;
-	double testValue{42.0};
-	TextField myTextField;
-	Tab myTab;
+	double testValue = 50.0; // Example value for the TextField
+	Table *paramTable;
+	
+	
+	
+	
+	float theta = 0.5; // Example value for Barnes-Hut θ
+	float dt = 1.0 / 60.0; // Example value for Δt (time step)
+	double G = 6.67430e-11; // Gravitational constant in m^3 kg^-1 s^-2
+	
 	
 	void setup() override;
-	void update() override;
 	void draw() override;
-	void exit() override;
 	
-	void keyPressed(int key) override;
+	
+
 	void keyReleased(int key) override;
-	void mouseMoved(int x, int y ) override;
-	void mouseDragged(int x, int y, int button) override;
 	void mousePressed(int x, int y, int button) override;
 	void mouseReleased(int x, int y, int button) override;
-	void mouseScrolled(int x, int y, float scrollX, float scrollY) override;
-	void mouseEntered(int x, int y) override;
-	void mouseExited(int x, int y) override;
-	void windowResized(int w, int h) override;
-	void dragEvent(ofDragInfo dragInfo) override;
-	void gotMessage(ofMessage msg) override;
-	
-	
 };
 
 
