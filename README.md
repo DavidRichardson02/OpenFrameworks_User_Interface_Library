@@ -196,17 +196,6 @@ cp OpenFrameworks_User_Interface_Library/src/*.cpp src/
 
 Adding interactive functionality to a real-time 2D Barnes-Hut N-body simulator using the widgets and resources provided, and achieved via a modularized implementation of the UI elements in a hierarchical structure of element management such that a single instantation of a 'TableManager' object will be responsible for all UI in the simulation and will require no additional assistance after it has been initialized with the UI elements.
 
-<br />
-
-Basically, TableManager manages the individual tables, the individual tables are made up of UI elements that execute similar functionalities, and the individual UI elements each handle a single task(defined when initializing using a lambda function) that is executed when the UI element is interacted with(i.e., when a button is clicked, a toggle is toggled, a slider is adjusted, etc.). Additionally, the tables also serve to group together UI elements based on broad categories of their purpose, for example, there is a table for handling visualization of parameters of the quadtree, a table for handling visualization of body data(like angular orientation), a table for handling visualization of some physics related stuff(like the gravitational vector field and the relative potential energy field), a special case table for custom galaxy creation(menus to begin, models of galaxies to distrubute bodies initial positions by to be chosen from, sliders for the number of bodies and their properties, etc.), as well as a few more tables, the main ones of which are involved in stuff like tweaking simulation parameters and interacting with bodies.
-
-<br />
-
-My main difficulty in making and implementing the above described UI is in defining the function callbacks for each UI element while maintaning the hierarchical structure grouping elements without necessitating too much dedicated data(that is otherwise irrelevant to the rest of the program). The other two less tricky problems are minimally inhibiting the performance of the simulation when the UI is not being used and completing all dynamic visualization with a single isolated coordinate system transform, where dynamic visualization just means the parts of the simulation that will be visualized relative to the user's dynamic configuration of the scene, basically the easiest way to understand what this means is by thinking of the window that the simulation is occuring in as being nothing but a viewing port through which you can look into the simulation, while the simulation itself can be thought of as happening on the coordinate system your looking into(kind of like how you can look at apple maps on your phone and zoom in/out and slide around, but here instead of the viewing port being your phone it's just the app window), where the affect of moving around your perspective is achieved by scaling and transforming the coordinate system(and by extension all the things in it) to reflect whatever configuration the user interaction specify.
-
-
-
-
 
 <br />
 <br />
@@ -234,5 +223,16 @@ https://github.com/user-attachments/assets/e2ff2d4c-7d2b-46ac-8520-f14f23ee2291
 
 <br />
 <br />
+
+
+<br />
+
+Basically, TableManager manages the individual tables, the individual tables are made up of UI elements that execute similar functionalities, and the individual UI elements each handle a single task(defined when initializing using a lambda function) that is executed when the UI element is interacted with(i.e., when a button is clicked, a toggle is toggled, a slider is adjusted, etc.). Additionally, the tables also serve to group together UI elements based on broad categories of their purpose, for example, there is a table for handling visualization of parameters of the quadtree, a table for handling visualization of body data(like angular orientation), a table for handling visualization of some physics related stuff(like the gravitational vector field and the relative potential energy field), a special case table for custom galaxy creation(menus to begin, models of galaxies to distrubute bodies initial positions by to be chosen from, sliders for the number of bodies and their properties, etc.), as well as a few more tables, the main ones of which are involved in stuff like tweaking simulation parameters and interacting with bodies.
+
+<br />
+
+My main difficulty in making and implementing the above described UI is in defining the function callbacks for each UI element while maintaning the hierarchical structure grouping elements without necessitating too much dedicated data(that is otherwise irrelevant to the rest of the program). The other two less tricky problems are minimally inhibiting the performance of the simulation when the UI is not being used and completing all dynamic visualization with a single isolated coordinate system transform, where dynamic visualization just means the parts of the simulation that will be visualized relative to the user's dynamic configuration of the scene, basically the easiest way to understand what this means is by thinking of the window that the simulation is occuring in as being nothing but a viewing port through which you can look into the simulation, while the simulation itself can be thought of as happening on the coordinate system your looking into(kind of like how you can look at apple maps on your phone and zoom in/out and slide around, but here instead of the viewing port being your phone it's just the app window), where the affect of moving around your perspective is achieved by scaling and transforming the coordinate system(and by extension all the things in it) to reflect whatever configuration the user interaction specify.
+
+
 
 
