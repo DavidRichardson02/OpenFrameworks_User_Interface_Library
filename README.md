@@ -182,3 +182,38 @@ cp OpenFrameworks_User_Interface_Library/src/*.cpp src/
    ```
 
 ---
+
+
+
+
+## Demonstrating UI Implementations(to add interactive functionality, shown using the unrelated Barnes-Hut N-body simulator program)
+
+
+<br />
+<br />
+
+
+
+https://github.com/user-attachments/assets/e80f2876-66ae-4536-9ff8-328aba6bec21
+
+
+
+<br />
+<br />
+
+
+
+
+
+
+
+
+https://github.com/user-attachments/assets/e2ff2d4c-7d2b-46ac-8520-f14f23ee2291
+
+
+
+
+<br />
+<br />
+
+
