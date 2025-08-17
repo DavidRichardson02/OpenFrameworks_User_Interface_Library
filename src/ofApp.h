@@ -1,4 +1,4 @@
-//  ofApp.h( || TestInputControls.cpp?)
+//  ofApp.h
 //  OpenFrameworks_User_Interface_Library
 //  DavidRichardson02
 
@@ -20,8 +20,10 @@
 class ofApp : public ofBaseApp
 {
 public:
-	double testValue = 50.0; // Example value for the TextField
-	Table *paramTable;
+	double testValue = 25.0; // Example value for the TextField
+	Table *inputControls;
+	Table *navigationalComponents;
+	TableManager *tableManager;
 	
 	
 	
@@ -34,9 +36,9 @@ public:
 	void setup() override;
 	void draw() override;
 	
-	
 
 	void keyReleased(int key) override;
+	void mouseDragged(int x, int y, int button) override;
 	void mousePressed(int x, int y, int button) override;
 	void mouseReleased(int x, int y, int button) override;
 };

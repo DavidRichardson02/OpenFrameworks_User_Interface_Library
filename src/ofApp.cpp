@@ -8,95 +8,55 @@
 
 
 
-
-
 void ofApp::setup()
 {
-	Button *myButton = new Button("Click Me", 50, 50, 120, 40, [this]() {
-		ofLogNotice("TestInputControls") << "Button callback triggered.";
-	});
-	
-	
-	Toggle *myToggle = new Toggle("Switch", 50, 120, 120, 40, false);
-	
-	
-	TextField *myTextField = new TextField("Value", 50, 190, 140, 40, 0, 100, testValue, 2);
-	
-	
-	Tab *myTab = new Tab("TestTab", 50, 260, 120, 40, false, [this]() {
-		ofLogNotice("TestInputControls") << "Tab pressed!";
-	});
+	Button *myButton = new Button("Click Button", 50, 50, 40, 40, [this]() {
+		ofLogNotice("TestInputControls") << "Button callback triggered.";});
+	Toggle *myToggle = new Toggle("Switch Toggle", 50, 120, 40, 40, false);
+	TextField *myTextField = new TextField("Value", 50, 300, 180, 50, 1, 100, testValue, 4);
 	ofLogNotice("TestInputControls") << "Setup complete.";
-
-	
-	paramTable = new Table("Simulation", 30, 30, 220, 20, true);
-	paramTable->addButtonElement(myButton);
-	paramTable->addToggleElement(myToggle);
-	paramTable->addTextFieldElement(myTextField);
-	
-	
-	
-	
+	inputControls = new Table("Input Controls Manager", 45, 45, 20, 20, false);
+	inputControls->addButtonElement(myButton);
+	inputControls->addToggleElement(myToggle);
+	inputControls->addTextFieldElement(myTextField);
 	
 	
 	Slider* thetaSlider = new Slider("MAC", 125, 50, 150, 10, 0, 2, theta);
-	Slider *dtS = new Slider("t", 0,0,200,15, (1/240), (1/30), dt);
-	TextField *gTF = new TextField("G", 0,0,200,17, 6.67e-11, 1e-8,  G,  9);
-
-	paramTable->addSliderElement(thetaSlider);
-	paramTable->addSliderElement(dtS);
-	paramTable->addTextFieldElement(gTF);
+	Slider *dtS = new Slider("t", 0,0,200,15, (1/120), 1, dt);
+	TextField *gTF = new TextField("G", 0,0,200,17,6.67430e-11, 6.67430e4, G, 15);
+	navigationalComponents = new Table("Navigation Components Manager", 45, 450, 20, 20, false);
+	navigationalComponents->addSliderElement(thetaSlider);
+	navigationalComponents->addSliderElement(dtS);
+	navigationalComponents->addTextFieldElement(gTF);
 	
 	
 	
-	
-	
-	// Optional: pack multiple tables
-	//TableManager *uiManager(0,"UI", 0 + ofGetWidth() * 0.025, ofGetHeight() * 0.030, 15, 15);
-	//uiManager->addTable(paramTable);
+	tableManager = new TableManager(0, "UI Elements Table Manager", 0 + ofGetWidth() * 0.025, ofGetHeight() * 0.030, 15, 15);
+	tableManager->addTable(inputControls);
+	tableManager->addTable(navigationalComponents);
 }
+
+
 
 
 
 void ofApp::draw()
 {
-	// Draw each UI element
-	ofBackground(40);
-	ofSetColor(255);
-	
-	paramTable->draw();
-	
-	// Provide some on-screen instructions
-	ofDrawBitmapStringHighlight("Click or toggle the controls above;\nType in the TextField and press ENTER to apply.",
-								50, 320);
+	ofBackground(40); ofSetColor(255);
+	tableManager->draw();
+	ofDrawBitmapStringHighlight("Click or toggle the controls above;\nType in the TextField and press ENTER to apply.", 25, ofGetHeight() - 50);
 }
 
 
-
-
-
-
-
-
-// Forward mouse events to each control
-void ofApp::mousePressed(int x, int y, int button)
-{
-	paramTable->mousePressed(x, y, button);
-}
-
-
-void ofApp::mouseReleased(int x, int y, int button)
-{
-	paramTable->mouseReleased(x, y, button);
-}
-
-
-
-
-
-
-// Forward key events to text field
 void ofApp::keyReleased(int key)
-{
-	paramTable->keyReleased(key);
-}
+{ tableManager->keyReleased(key); }
+
+void ofApp::mouseDragged(int x, int y, int button)
+{ tableManager->mouseDragged(x, y, button); }
+void ofApp::mousePressed(int x, int y, int button)
+{ tableManager->mousePressed(x, y, button); }
+void ofApp::mouseReleased(int x, int y, int button)
+{ tableManager->mouseReleased(x, y, button); }
+
+
+

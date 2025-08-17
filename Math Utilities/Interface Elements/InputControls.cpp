@@ -432,7 +432,7 @@ void TextField::draw()
 	else
 	{
 		// Display the value with a precision of 15 if the user is not typing
-		ofDrawBitmapString(label + ": " + ofToString(value, 15), rect.x + 5, rect.y + rect.height * 0.6125);
+		ofDrawBitmapString(label + ": " + ofToString(*value, precision), rect.x + 5, rect.y + rect.height * 0.6125);
 	}
 	
 	
@@ -443,7 +443,7 @@ void TextField::draw()
 	
 	
 	/// Display a warning message if the input is out of range or if the value is greater than the minimum allowed value.
-	if(!inputInRange || *value > min)
+	if(!inputInRange || *value > max)
 	{
 		warningMode = true; // Enable warning mode
 		

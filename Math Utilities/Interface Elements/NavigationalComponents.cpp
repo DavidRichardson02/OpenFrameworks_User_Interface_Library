@@ -126,7 +126,7 @@ void Slider::draw()
 	
 	/// Step 4: Show the label and current numeric value
 	ofSetColor(255, 255, 255); // Switch the color to white
-	ofDrawBitmapString(label + ": " + ofToString(value, 3), rect.x + rect.width + 10, rect.y + rect.height * 0.5); // Render the label and the current value of the slider text to the right of the slider’s bounding rectangle
+	ofDrawBitmapString(label + ": " + ofToString(*value, 3), rect.x + rect.width + 10, rect.y + rect.height * 0.5); // Render the label and the current value of the slider text to the right of the slider’s bounding rectangle
 }
 
 
@@ -171,7 +171,7 @@ void Slider::mouseDragged(int x, int y, int button)
 	if (isDragging)
 	{
 		/// If the mouse is being dragged and isDragging is true, calculate the new value of the slider
-		float newValue = ofMap(x, rect.x, rect.x + rect.width, min, max, true);
+		float newValue = ofMap(x, rect.x, (rect.x + rect.width), min, max, true);
 		
 		/// Update the value of the slider
 		*value = newValue;
@@ -358,6 +358,11 @@ void Table::addTooltipElement(Tooltip* &_toolTipElement)
 	toolTipElements.emplace_back(_toolTipElement);
 }
 
+
+void Table::addTabElement(Tab* &_tabElement)
+{
+	tabElements.emplace_back(_tabElement);
+}
 
 
 /**
@@ -1302,7 +1307,10 @@ void TableManager::keyReleased(int key)
 	{
 		for (auto& table : tables)
 		{
-			table->keyReleased(key);
+			if(table->isOpened)
+			{
+				table->keyReleased(key);
+			}
 		}
 	}
 }
@@ -1313,8 +1321,7 @@ void TableManager::mousePressed(int x, int y, int button)
 	{
 		isOpened = !isOpened;
 	}
-	
-	
+
 	
 	if (isOpened)
 	{
@@ -1322,20 +1329,7 @@ void TableManager::mousePressed(int x, int y, int button)
 		{
 			for (auto& table : tables)
 			{
-				table->mousePressed(x, y, button);
-				
-				
-				if(table->tableType == 2)
-				{
-					if(table->isOpened)
-					{
-						focusMode = true;
-					}
-					else
-					{
-						focusMode = false;
-					}
-				}
+				table->mousePressed(x, y, button); // Only process mouse events for opened tables
 			}
 		}
 	}
@@ -1347,7 +1341,10 @@ void TableManager::mouseDragged(int x, int y, int button)
 	{
 		for (auto& table : tables)
 		{
-			table->mouseDragged(x, y, button);
+			if(table->isOpened)
+			{
+				table->mouseDragged(x, y, button); // Only process mouse events for opened tables
+			}
 		}
 	}
 }
@@ -1358,7 +1355,10 @@ void TableManager::mouseReleased(int x, int y, int button)
 	{
 		for (auto& table : tables)
 		{
-			table->mouseReleased(x, y, button);
+			if(table->isOpened)
+			{
+				table->mouseReleased(x, y, button); // Only process mouse events for opened tables
+			}
 		}
 	}
 }

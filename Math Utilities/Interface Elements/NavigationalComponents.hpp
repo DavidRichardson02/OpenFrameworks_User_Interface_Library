@@ -106,7 +106,8 @@ public:
 	void addButtonElement(Button* &_buttonElement); // Adds a button element to the table
 	void addToggleElement(Toggle* &_toggleElement); // Adds a toggle element to the table
 	void addTextFieldElement(TextField* &_textFieldElement); // Adds a text field element to the table
-	void addTooltipElement(Tooltip* &_toolTipElement); // Adds a slider element to the table
+	void addTooltipElement(Tooltip* &_toolTipElement); // Adds a tooltip element to the table
+	void addTabElement(Tab* &_tabElement); // Adds a tab element to the table
 													   /// \}
 	
 	
@@ -170,6 +171,8 @@ public:
 	std::vector<Toggle*> toggleElements; // The toggle elements in the table
 	std::vector<TextField*> textfieldElements; // The text field elements in the table
 	std::vector<Tooltip*> toolTipElements; // The tooltip elements in the table
+	std::vector<Tab*> tabElements; // The tab elements in the table
+																   //std::vector<Tab*> tabElements; // The tab elements in the table
 										   /// \}
 };
 
