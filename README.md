@@ -42,6 +42,38 @@ Each control lives in its own class, so you can include just what you need or ex
 <br>
 <br>
 
+<img width="1026" height="794" alt="Screenshot 2025-09-08 at 9 29 46 PM" src="https://github.com/user-attachments/assets/c97837ab-1e3c-4b7a-8dc4-4b469cc4b79c" />
+
+
+<br>
+<br>
+
+
+<img width="1854" height="1156" alt="Screenshot 2025-09-08 at 9 28 54 PM" src="https://github.com/user-attachments/assets/c9ca29b9-48d7-483f-b1c7-24d645e94643" />
+
+
+<br>
+<br>
+
+
+<img width="1855" height="1145" alt="Screenshot 2025-09-08 at 9 28 24 PM" src="https://github.com/user-attachments/assets/4a753277-d300-438a-8060-1efacca64182" />
+
+
+<br>
+<br>
+
+
+<img width="1854" height="1148" alt="Screenshot 2025-09-08 at 9 27 42 PM" src="https://github.com/user-attachments/assets/c378587d-acbb-44df-a959-37f6bc31dabd" />
+
+
+
+<br>
+<br>
+
+
+
+<br>
+<br>
 
 
 
