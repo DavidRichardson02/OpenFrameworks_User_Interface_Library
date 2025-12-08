@@ -366,7 +366,7 @@ void Template::draw()
 	{
 		ofSetColor(140, 140, 140, 180); // Gray background when not interfacing
 	}
-	ofDrawRectRounded(interfaceWindow, interfaceWindow.width * 0.15); // Draw rounded rectangle
+	ofDrawRectRounded(interfaceWindow, interfaceWindow.width * 0.25); // Draw rounded rectangle with corner radius proportional to width
 	
 	
 	/// Step 2: Draw the template border
@@ -379,7 +379,9 @@ void Template::draw()
 	
 	/// Step 3: Draw the template label
 	ofSetColor(255); // White color for text
-	float labelX = interfaceWindow.x + (interfaceWindow.width - screenLabel.length() * 8) * 0.5; // Center the label horizontally
+	// Use ofBitmapStringGetBoundingBox for accurate text dimensions
+	ofRectangle textBounds = ofBitmapStringGetBoundingBox(screenLabel, 0, 0);
+	float labelX = interfaceWindow.x + (interfaceWindow.width - textBounds.width) * 0.5; // Center the label horizontally
 	float labelY = interfaceWindow.y + interfaceWindow.height * 0.5 + 4; // Center the label vertically
 	ofDrawBitmapString(screenLabel, labelX, labelY);
 	
