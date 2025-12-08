@@ -312,6 +312,7 @@ public:
 	/// \{
 	void setPosition(ofVec2f rectPos); // Sets the position of the top left corner of RectangularGridDragSelection
 	void set(ofVec2f rectSize); // Sets the size of the RectangularGridDragSelection
+	void reset(); // Resets the grid selection to initial state
 								/// \}
 	
 	
@@ -320,6 +321,13 @@ public:
 	void updateGridCells();  // Update gridCells based on current gridBounds and granularity
 	void draw(); // Draws the RectangularGridDragSelection square on the screen
 	
+	
+	/// ------------- Getters -------------
+	/// \{
+	bool isConfiguring() const { return gridConfigureMode; } // Returns whether the grid is in configure mode
+	bool isActive() const { return isDragging || gridConfigureMode; } // Returns whether the grid is actively being used
+	int getCellCount() const { return gridCells.size(); } // Returns the number of cells in the grid
+	/// \}
 	
 	
 	/// ------------- User Interaction -------------

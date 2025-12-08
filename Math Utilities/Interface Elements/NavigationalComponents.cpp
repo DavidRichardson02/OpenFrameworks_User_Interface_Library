@@ -1527,6 +1527,32 @@ void RectangularGridDragSelection::set(ofVec2f rectSize)
 	updateGridCells();
 }
 
+
+/**
+ * reset
+ *
+ * Resets the RectangularGridDragSelection to its initial state, clearing all selections,
+ * grid cells, and resetting state flags. This allows the user to start a fresh selection.
+ *
+ * @return void
+ */
+void RectangularGridDragSelection::reset()
+{
+	/// Step 1: Clear all state flags
+	isDragging = false;
+	isPressed = false;
+	gridConfigureMode = false;
+	
+	/// Step 2: Clear the grid cells
+	gridCells.clear();
+	
+	/// Step 3: Reset the grid bounds to a minimal size
+	gridBounds.set(gridBounds.x, gridBounds.y, 0, 0);
+	
+	/// Step 4: Reset granularity to default value
+	granularity = (min + max) * 0.5f;
+}
+
 /**
  * draw
  *
