@@ -1800,6 +1800,18 @@ void RectangularGridDragSelection::updateGridCells()
 	/// Clear previously stored cells before recalculating
 	gridCells.clear(); // Empties the vector of existing grid cells
 	
+	/// Safety check: ensure granularity is valid (positive and not too large)
+	if (granularity <= 0.0f || granularity > 1000.0f)
+	{
+		return; // Invalid granularity, skip cell generation
+	}
+	
+	/// Safety check: ensure grid bounds have positive dimensions
+	if (gridBounds.getWidth() <= 0.0f || gridBounds.getHeight() <= 0.0f)
+	{
+		return; // Invalid bounds, skip cell generation
+	}
+	
 	/// Compute cell dimensions based on the bounding region and the number of subdivisions
 	float cellWidth = gridBounds.getWidth() / granularity;  // Horizontal slice size
 	float cellHeight = gridBounds.getHeight() / granularity; // Vertical slice size
