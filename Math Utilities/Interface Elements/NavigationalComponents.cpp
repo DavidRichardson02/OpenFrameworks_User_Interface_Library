@@ -1805,9 +1805,9 @@ void RectangularGridDragSelection::updateGridCells()
 	float cellHeight = gridBounds.getHeight() / granularity; // Vertical slice size
 	
 	/// Fill gridCells by stepping across the bounding region in a 2D loop
-	for (float i = 0; i < granularity; ++i)
+	for (int i = 0; i < (int)granularity; ++i)
 	{
-		for (float j = 0; j < granularity; ++j)
+		for (int j = 0; j < (int)granularity; ++j)
 		{
 			// Determine the top-left corner of the cell
 			float cellX = gridBounds.getX() + i * cellWidth;

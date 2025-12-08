@@ -374,7 +374,7 @@ public:
 	float min, max; // The minimum and maximum values of the slider/granularity
 	bool isPressed; // Represents the state of the tab (pressed/unpressed)
 	bool isDragging; // Indicates whether the slider is currently being dragged
-	bool gridConfigureMode = false; // Flag to track when the user
+	bool gridConfigureMode = false; // Flag to track when the user is in grid configuration mode
 									/// \}
 };
 
