@@ -1452,13 +1452,33 @@ void TableManager::focusedMode()
 
 // Constructor that initializes a RectangularGridDragSelection with a label, specific position, and size
 RectangularGridDragSelection::RectangularGridDragSelection(std::string label, float _x, float _y, float _w, float _h)
-: gridLabel(label), gridBounds(_x, _y, _w, _h), isPressed(false), isDragging(false), granularity(_w * 0.005) {}
+: gridLabel(label), gridBounds(_x, _y, _w, _h), isPressed(false), isDragging(false), granularity(10.0f), min(5.0f), max(50.0f)
+{
+	// Initialize the granularity slider
+	rectangleGranularitySlider = Slider("Grid Granularity", _x, _y + _h + 10, 200, 15, min, max, granularity);
+	
+	// Initialize the submit button
+	gridGranularitySubmit = Button("Submit Grid", _x, _y + _h + 40, 100, 20);
+	
+	// Initialize grid cells based on initial configuration
+	updateGridCells();
+}
 
 
 
 // Constructor that initializes a RectangularGridDragSelection with a label, specific position, size, and min/max values for the slider
 RectangularGridDragSelection::RectangularGridDragSelection(std::string label, float _x, float _y, float _w, float _h, float _min, float _max)
-: gridLabel(label), gridBounds(_x, _y, _w, _h), min(_min), max(_max), isPressed(false), isDragging(false) {}
+: gridLabel(label), gridBounds(_x, _y, _w, _h), min(_min), max(_max), isPressed(false), isDragging(false), granularity((_min + _max) * 0.5f)
+{
+	// Initialize the granularity slider with custom min/max values
+	rectangleGranularitySlider = Slider("Grid Granularity", _x, _y + _h + 10, 200, 15, min, max, granularity);
+	
+	// Initialize the submit button
+	gridGranularitySubmit = Button("Submit Grid", _x, _y + _h + 40, 100, 20);
+	
+	// Initialize grid cells based on initial configuration
+	updateGridCells();
+}
 
 
 
@@ -1507,12 +1527,83 @@ void RectangularGridDragSelection::set(ofVec2f rectSize)
 	updateGridCells();
 }
 
+/**
+ * draw
+ *
+ * The draw function renders the RectangularGridDragSelection component with visual feedback
+ * based on its current state. It shows the grid bounds, individual cells when configured,
+ * and displays the granularity controls when the user is adjusting grid settings.
+ *
+ * Visual States:
+ * - Dragging: Semi-transparent grid bounds being resized
+ * - Configure Mode: Grid bounds locked, showing cells and granularity controls
+ * - Idle: Grid bounds displayed with outline only
+ *
+ * @return void
+ */
 void RectangularGridDragSelection::draw()
 {
-	// Draw the rectangular grid selection and other components
-	ofDrawRectangle(gridBounds);
-	rectangleGranularitySlider.draw();
-	gridGranularitySubmit.draw();
+	/// Step 1: Draw the grid bounds with appropriate visual feedback
+	if (isDragging)
+	{
+		// Draw semi-transparent filled rectangle while dragging
+		ofFill();
+		ofSetColor(100, 150, 255, 50); // Light blue with transparency
+		ofDrawRectangle(gridBounds);
+		
+		// Draw outline
+		ofNoFill();
+		ofSetColor(100, 150, 255, 200); // Brighter blue outline
+		ofSetLineWidth(2);
+		ofDrawRectangle(gridBounds);
+		ofSetLineWidth(1);
+	}
+	else if (gridConfigureMode)
+	{
+		// Draw grid bounds with a locked appearance
+		ofNoFill();
+		ofSetColor(100, 255, 100, 200); // Green to indicate locked selection
+		ofSetLineWidth(2);
+		ofDrawRectangle(gridBounds);
+		ofSetLineWidth(1);
+		
+		/// Step 2: Draw individual grid cells when in configure mode
+		if (!gridCells.empty())
+		{
+			ofSetColor(200, 200, 200, 100); // Light gray for cell divisions
+			ofSetLineWidth(1);
+			for (const auto& cell : gridCells)
+			{
+				ofNoFill();
+				ofDrawRectangle(cell);
+			}
+		}
+		
+		/// Step 3: Draw granularity controls (slider and submit button)
+		ofSetColor(255, 255, 255); // Reset color to white
+		rectangleGranularitySlider.draw();
+		gridGranularitySubmit.draw();
+		
+		/// Step 4: Display grid information
+		std::string gridInfo = gridLabel + " - Cells: " + ofToString((int)(granularity * granularity));
+		ofDrawBitmapString(gridInfo, gridBounds.x, gridBounds.y - 5);
+	}
+	else
+	{
+		// Draw idle state - just the outline
+		ofNoFill();
+		ofSetColor(150, 150, 150, 150); // Gray outline
+		ofSetLineWidth(1);
+		ofDrawRectangle(gridBounds);
+		
+		// Show label if grid has been configured
+		if (!gridCells.empty())
+		{
+			ofSetColor(255, 255, 255);
+			std::string gridInfo = gridLabel + " - " + ofToString((int)(granularity * granularity)) + " cells";
+			ofDrawBitmapString(gridInfo, gridBounds.x, gridBounds.y - 5);
+		}
+	}
 }
 
 
@@ -1522,19 +1613,19 @@ void RectangularGridDragSelection::draw()
  * This function facilitates the dynamic resizing of the grid's bounding box
  * or the adjustment of the associated granularity slider. Specifically, it
  * listens for mouse drag events and either resizes the bounding box, keeping
- * it in a square shape, or updates the slider control if the bounding box is
- * not currently being modified.
+ * it in a square shape, or updates the slider control and grid cells if in
+ * configure mode.
  *
  * Purpose:
  * - Maintain a consistent, square bounding box by tracking mouse drag distance.
  * - Update the grid cells immediately whenever resizing occurs.
- * - Defer to the granularity slider for all mouse drag events when not resizing.
+ * - Handle granularity slider adjustments and update grid cells in configure mode.
  *
  * Implementation Summary:
  * - Check if isDragging is true to handle grid resizing.
  * - Calculate the bounding box dimensions to enforce a square shape.
  * - Update the bounding box and refresh grid cells.
- * - Otherwise, delegate handling to the rectangleGranularitySlider.
+ * - In configure mode, delegate to slider and update cells when granularity changes.
  *
  * @param x: The x-coordinate of the mouse position
  * @param y: The y-coordinate of the mouse position
@@ -1561,10 +1652,13 @@ void RectangularGridDragSelection::mouseDragged(int x, int y, int button)
 		/// Step 4: Refresh the positions and sizes of the grid's cells to reflect changes.
 		updateGridCells(); // Update grid cells based on the new gridBounds
 	}
-	else
+	else if (gridConfigureMode)
 	{
-		/// Step 5: If not resizing the grid, pass mouse drag events to the slider.
+		/// Step 5: In configure mode, handle slider adjustments
 		rectangleGranularitySlider.mouseDragged(x, y, button);
+		
+		// Update grid cells if granularity has changed
+		updateGridCells();
 	}
 }
 
@@ -1574,39 +1668,49 @@ void RectangularGridDragSelection::mouseDragged(int x, int y, int button)
  *
  * This function manages user initiation of grid dragging behavior or interaction
  * with the granularity controls. Specifically, when the mouse is pressed, it
- * determines whether to begin a grid drag (if inside the grid bounds) or redirect
- * the event to the appropriate UI element (the slider or the submit button).
+ * determines whether to begin a grid drag (if inside the grid bounds and not in
+ * configure mode), or redirect the event to the appropriate UI element (the slider
+ * or the submit button) when in configure mode.
  *
  * Purpose:
  * - Check if the mouse press initiates a grid drag by verifying its position relative to the grid bounds.
  * - Forward a mouse press event to the granularity slider or submit button when the press occurs within their respective areas.
+ * - Respect the gridConfigureMode to prevent starting a new drag while configuring.
  *
  * Means of Execution:
- * - If the press is detected inside the rectangular grid bounds, enable dragging.
- * - If the press is inside the slider or submit button regions, delegate handling
+ * - If not in configure mode and the press is detected inside the rectangular grid bounds, enable dragging.
+ * - If in configure mode and the press is inside the slider or submit button regions, delegate handling
  * to those components.
  *
  * @return void
  */
 void RectangularGridDragSelection::mousePressed(int x, int y, int button)
 {
-	/// Step 1: Check if the mouse press is within the grid bounds.
-	if (gridBounds.inside(x, y))
+	/// Step 1: Check if we're in configure mode
+	if (gridConfigureMode)
 	{
-		// If inside, enable grid dragging behavior.
-		isDragging = true;
+		/// In configure mode, only handle slider and button interactions
+		if (rectangleGranularitySlider.rect.inside(x, y))
+		{
+			// If within the slider, delegate to the slider's mousePressed handling.
+			rectangleGranularitySlider.mousePressed(x, y, button);
+		}
+		else if (gridGranularitySubmit.rect.inside(x, y))
+		{
+			// If within the submit button, delegate to its mousePressed handling.
+			gridGranularitySubmit.mousePressed(x, y, button);
+		}
 	}
-	/// Step 2: Otherwise, verify if the slider area has been clicked.
-	else if (rectangleGranularitySlider.rect.inside(x, y))
+	else
 	{
-		// If within the slider, delegate to the slider's mousePressed handling.
-		rectangleGranularitySlider.mousePressed(x, y, button);
-	}
-	/// Step 3: If not inside the slider, check if the submit button was clicked.
-	else if (gridGranularitySubmit.rect.inside(x, y))
-	{
-		// If within the submit button, delegate to its mousePressed handling.
-		gridGranularitySubmit.mousePressed(x, y, button);
+		/// Step 2: Not in configure mode - check if the mouse press is within the grid bounds to start dragging
+		if (gridBounds.inside(x, y))
+		{
+			// If inside, reset the grid and enable grid dragging behavior.
+			gridBounds.set(x, y, 0, 0); // Start new selection from this point
+			isDragging = true;
+			gridCells.clear(); // Clear any existing grid cells
+		}
 	}
 }
 
@@ -1615,8 +1719,9 @@ void RectangularGridDragSelection::mousePressed(int x, int y, int button)
  * mouseReleased
  *
  * A function to finalize dragging when the user releases the mouse.
- * It resets the dragging state, notifies slider and submit controls of mouse release,
- * and conditionally prepares to finalize grid setup if the relevant submit button is pressed.
+ * It resets the dragging state, enters configure mode if a valid selection was made,
+ * notifies slider and submit controls of mouse release, and handles grid finalization
+ * when the submit button is pressed.
  *
  * @param x: The x-coordinate of the mouse position
  * @param y: The y-coordinate of the mouse position
@@ -1625,17 +1730,31 @@ void RectangularGridDragSelection::mousePressed(int x, int y, int button)
  */
 void RectangularGridDragSelection::mouseReleased(int x, int y, int button)
 {
-	/// Stop the drag by resetting the isDragging flag
+	/// Step 1: If we were dragging, enter configure mode
+	if (isDragging && gridBounds.getWidth() > 10 && gridBounds.getHeight() > 10)
+	{
+		// Valid selection made - enter configure mode
+		gridConfigureMode = true;
+		
+		// Update grid cells with current granularity
+		updateGridCells();
+	}
+	
+	/// Step 2: Stop the drag by resetting the isDragging flag
 	isDragging = false; // The user has released the mouse, so dragging is no longer active
 	
-	/// Notify UI elements that the mouse has been released
+	/// Step 3: Notify UI elements that the mouse has been released
 	rectangleGranularitySlider.mouseReleased(x, y, button); // Relay mouse release to the slider
 	gridGranularitySubmit.mouseReleased(x, y, button);      // Relay mouse release to the submit button
 	
-	/// If the submit button is pressed, handle further actions
+	/// Step 4: If the submit button is pressed, finalize the grid
 	if (gridGranularitySubmit.isPressed)
 	{
-		//finalizeGridSetup(); // Temporarily disabled or pending further implementation
+		// Finalize the grid configuration
+		gridConfigureMode = false; // Exit configure mode
+		
+		// Grid is now locked and ready for use
+		// The gridCells vector contains all the configured cells
 	}
 }
 
