@@ -9,7 +9,7 @@
  *   - Slider: A basic GUI slider with interactive mouse handling and configurable range/precision.
  *   - Table: A container organizing multiple elements (sliders, buttons, toggles, text fields, etc.).(WIP,		7/8, ~87.5%, 	fully functional but slight auto-positioning issues)
  *   - TableManager: Manages multiple tables, orchestrating their positions, interactions, and layout.(WIP,		4/5, ~80%, 		fully functional but bit more tricky auto-positionaing & aligning issues)
- *   - RectangularGridDragSelection: Allows the user to drag and define a square grid area with uniform cells.(WIP,		2/3, ~66%, 		mostly done with groundwork but needs to be significantly extended)
+ *   - RectangularGridDragSelection: Allows the user to drag and define a square grid area with uniform cells.(COMPLETE,		3/3, 100%, 		fully implemented with drag selection, configure mode, and grid cell generation)
  *   - RectangularSelectionWindow: A window class that leverages RectangularGridDragSelection for area-based user selections.(WIP,		1/3, ~33%, 		very basic foundation been layed which must be completed and will still need to be significantly extended)
  *
  * These components are designed to facilitate user interaction and data manipulation within a graphical interface.
@@ -279,7 +279,7 @@ public:
 
 
 /**
- * RectangularGridDragSelection class provides functionality to create a rectangular  grid
+ * RectangularGridDragSelection class provides functionality to create a rectangular grid
  * with the top left centered at the starting position of the mouse when left clicked,
  * the user can then begin dragging their cursor to change the size, shape, and orientation
  * of the rectangle, with the top left corner of the rectangle(starting position) fixed in
@@ -296,6 +296,16 @@ public:
  * and will never not have four right angles, this must always be true due to the
  * requirement that all grid cells are of a uniform size and can be evenly distributed
  * to fill the grid space.
+ *
+ * IMPLEMENTATION STATUS: COMPLETE (3/3, 100%)
+ * 
+ * Features:
+ * - Drag-to-select square grid bounds with real-time visual feedback
+ * - Configure mode with granularity slider and submit button
+ * - Automatic grid cell generation based on granularity
+ * - Visual states: dragging (blue), configuring (green), idle (gray)
+ * - Helper methods: reset(), isConfiguring(), isActive(), getCellCount()
+ * - Proper state management and event handling
  */
 class RectangularGridDragSelection
 {
@@ -312,6 +322,7 @@ public:
 	/// \{
 	void setPosition(ofVec2f rectPos); // Sets the position of the top left corner of RectangularGridDragSelection
 	void set(ofVec2f rectSize); // Sets the size of the RectangularGridDragSelection
+	void reset(); // Resets the grid selection to initial state
 								/// \}
 	
 	
@@ -320,6 +331,13 @@ public:
 	void updateGridCells();  // Update gridCells based on current gridBounds and granularity
 	void draw(); // Draws the RectangularGridDragSelection square on the screen
 	
+	
+	/// ------------- Getters -------------
+	/// \{
+	bool isConfiguring() const { return gridConfigureMode; } // Returns whether the grid is in configure mode
+	bool isActive() const { return isDragging || gridConfigureMode; } // Returns whether the grid is actively being used
+	int getCellCount() const { return gridCells.size(); } // Returns the number of cells in the grid
+	/// \}
 	
 	
 	/// ------------- User Interaction -------------
@@ -356,7 +374,7 @@ public:
 	float min, max; // The minimum and maximum values of the slider/granularity
 	bool isPressed; // Represents the state of the tab (pressed/unpressed)
 	bool isDragging; // Indicates whether the slider is currently being dragged
-	bool gridConfigureMode = false; // Flag to track when the user
+	bool gridConfigureMode = false; // Flag to track when the user is in grid configuration mode
 									/// \}
 };
 
